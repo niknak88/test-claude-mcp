@@ -247,14 +247,31 @@
   .btn-line:hover { background: var(--ink); color: var(--bg); }
 
   /* Hero */
-  .hero { padding: 76px 0 90px; }
+  .hero { padding: 76px 0 90px; position: relative; overflow: hidden; }
+  .hero-watermark {
+    position: absolute;
+    top: -70px;
+    right: -60px;
+    width: 560px;
+    max-width: 60vw;
+    aspect-ratio: 230 / 141;
+    background: var(--surface);
+    -webkit-mask: url('assets/logo-cat.png') no-repeat center / contain;
+    mask: url('assets/logo-cat.png') no-repeat center / contain;
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+  }
   .hero-grid {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
     gap: 50px;
     align-items: center;
   }
   @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) { .hero-watermark { opacity: 0.4; } }
   .hero h1 {
     font-size: clamp(2.1rem, 4.4vw, 3.05rem);
     margin-top: 16px;
@@ -284,7 +301,7 @@
   section:first-of-type { border-top: none; }
   .head { margin-top: 12px; font-size: clamp(1.6rem, 2.8vw, 2.15rem); max-width: 22ch; }
 
-  .panel { background: var(--bg-panel); }
+  .panel { background: var(--surface); }
 
   /* About */
   .about-grid {
@@ -609,6 +626,7 @@
 <main id="main">
 
   <section class="hero" id="accueil">
+    <div class="hero-watermark" aria-hidden="true"></div>
     <div class="container hero-grid">
       <div>
         <span class="label">Comportementaliste féline · Vezin</span>
@@ -627,7 +645,7 @@
     </div>
   </section>
 
-  <section id="profil">
+  <section id="profil" class="panel">
     <div class="container about-grid">
       <div class="photo-pair">
         <div class="photo-card"><svg class="cat-mark" aria-hidden="true"><use href="#icon-cat"/></svg></div>
@@ -653,7 +671,7 @@
     </div>
   </section>
 
-  <section id="charte" class="panel">
+  <section id="charte">
     <div class="container charter-grid">
       <div>
         <span class="label">Mes engagements</span>
@@ -670,7 +688,7 @@
     </div>
   </section>
 
-  <section id="services">
+  <section id="services" class="panel">
     <div class="container">
       <span class="label">Consultations</span>
       <h2 class="head">Quand consulter un·e comportementaliste félin ?</h2>
@@ -693,7 +711,7 @@
     </div>
   </section>
 
-  <section id="methode" class="panel">
+  <section id="methode">
     <div class="container">
       <span class="label">Déroulement</span>
       <h2 class="head">Comment se passe une consultation</h2>
@@ -706,7 +724,7 @@
     </div>
   </section>
 
-  <section id="tarifs">
+  <section id="tarifs" class="panel">
     <div class="container">
       <span class="label">Infos pratiques</span>
       <h2 class="head">Tarifs</h2>
